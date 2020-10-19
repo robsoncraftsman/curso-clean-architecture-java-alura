@@ -12,6 +12,7 @@ public class AlunoBuilder {
 	private String nome;
 	private Cpf cpf;
 	private Email email;
+	private String senha;
 	private final List<Telefone> telefones = new ArrayList<>();
 
 	public AlunoBuilder comNome(final String nome) {
@@ -29,13 +30,18 @@ public class AlunoBuilder {
 		return this;
 	}
 
+	public AlunoBuilder comSenha(final String senha) {
+		this.senha = senha;
+		return this;
+	}
+
 	public AlunoBuilder comTelefone(final String ddd, final String numero) {
 		this.telefones.add(new Telefone(ddd, numero));
 		return this;
 	}
 
 	public Aluno build() {
-		final var aluno = new Aluno(this.cpf, this.nome, this.email);
+		final var aluno = new Aluno(this.cpf, this.nome, this.email, this.senha);
 		this.telefones.stream().forEach(t -> aluno.addTelefone(t));
 		return aluno;
 	}

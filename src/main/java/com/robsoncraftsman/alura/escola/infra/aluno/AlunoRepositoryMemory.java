@@ -19,14 +19,18 @@ public class AlunoRepositoryMemory implements AlunoRepository {
 	@Override
 	public Aluno buscarPorCpf(final Cpf cpf) {
 		return alunos.stream()
-			.filter(a -> a.getCpf().equals(cpf))
-			.findFirst()
-			.orElse(null);
+				.filter(a -> a.getCpf().equals(cpf))
+				.findFirst()
+				.orElse(null);
 	}
 
 	@Override
 	public List<Aluno> buscarTodosAlunosMatriculados() {
 		return AlunoRepositoryMemory.alunos;
+	}
+
+	public void limparDados() {
+		alunos.clear();
 	}
 
 }
